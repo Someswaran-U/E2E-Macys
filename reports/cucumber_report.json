@@ -1,0 +1,223 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "end-to-end-product-purchase-flow;successfully-purchasing-a-product",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Successfully purchasing a product",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1827351699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I am on the homepage",
+            "match": {
+              "location": "file:\\C:\\Users\\2397797\\OneDrive%20-%20Cognizant\\Desktop\\macys\\features\\step_definitions\\ProductPurchase.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23150312600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I search for the product using product Id : \"86800\"",
+            "match": {
+              "location": "file:\\C:\\Users\\2397797\\OneDrive%20-%20Cognizant\\Desktop\\macys\\features\\step_definitions\\ProductPurchase.js:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13830988300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "I should be navigated to the Product Description Page (PDP) for the product",
+            "match": {
+              "location": "file:\\C:\\Users\\2397797\\OneDrive%20-%20Cognizant\\Desktop\\macys\\features\\step_definitions\\ProductPurchase.js:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 372400800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "I click the Add to Bag button",
+            "match": {
+              "location": "file:\\C:\\Users\\2397797\\OneDrive%20-%20Cognizant\\Desktop\\macys\\features\\step_definitions\\ProductPurchase.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 611994500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "the bag overlay should appear and the price on the bag overlay should match the product price on the PDP",
+            "match": {
+              "location": "file:\\C:\\Users\\2397797\\OneDrive%20-%20Cognizant\\Desktop\\macys\\features\\step_definitions\\ProductPurchase.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2532858000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "I click the bag icon",
+            "match": {
+              "location": "file:\\C:\\Users\\2397797\\OneDrive%20-%20Cognizant\\Desktop\\macys\\features\\step_definitions\\ProductPurchase.js:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2444603999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "I should be navigated to the Bag page and the product and price on the Bag page should match the PDP",
+            "match": {
+              "location": "file:\\C:\\Users\\2397797\\OneDrive%20-%20Cognizant\\Desktop\\macys\\features\\step_definitions\\ProductPurchase.js:44"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1897482199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 19,
+            "name": "I click the Checkout button",
+            "match": {
+              "location": "file:\\C:\\Users\\2397797\\OneDrive%20-%20Cognizant\\Desktop\\macys\\features\\step_definitions\\ProductPurchase.js:49"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 882594799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "I should be navigated to the Checkout page and the product and price on the Checkout page should match the PDP",
+            "match": {
+              "location": "file:\\C:\\Users\\2397797\\OneDrive%20-%20Cognizant\\Desktop\\macys\\features\\step_definitions\\ProductPurchase.js:53"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13584281900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 23,
+            "name": "I enter delivery details: firstName, lastName, address, phoneNumber",
+            "match": {
+              "location": "file:\\C:\\Users\\2397797\\OneDrive%20-%20Cognizant\\Desktop\\macys\\features\\step_definitions\\ProductPurchase.js:59"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 6970699,
+              "error_message": "Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'allure-playwright' imported from C:\\Users\\2397797\\OneDrive - Cognizant\\Desktop\\macys\\node_modules\\allure-js-commons\\dist\\esm\\sdk\\runtime\\runtime.js\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:256:9)\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\n    at moduleResolve (node:internal/modules/esm/resolve:854:18)\n    at defaultResolve (node:internal/modules/esm/resolve:984:11)\n    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:780:12)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:704:25)\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:687:38)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:305:38)\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:643:36)\n    at TracingChannel.tracePromise (node:diagnostics_channel:344:14)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 24,
+            "name": "I should see the delivery summary with the correct details",
+            "match": {
+              "location": "file:\\C:\\Users\\2397797\\OneDrive%20-%20Cognizant\\Desktop\\macys\\features\\step_definitions\\ProductPurchase.js:63"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 27,
+            "name": "I enter payment details: ccNo, month, year, CVV",
+            "match": {
+              "location": "file:\\C:\\Users\\2397797\\OneDrive%20-%20Cognizant\\Desktop\\macys\\features\\step_definitions\\ProductPurchase.js:68"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "I click the pay button",
+            "match": {
+              "location": "file:\\C:\\Users\\2397797\\OneDrive%20-%20Cognizant\\Desktop\\macys\\features\\step_definitions\\ProductPurchase.js:72"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 29,
+            "name": "I should see the order confirmation with the order number",
+            "match": {
+              "location": "file:\\C:\\Users\\2397797\\OneDrive%20-%20Cognizant\\Desktop\\macys\\features\\step_definitions\\ProductPurchase.js:76"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 37457699
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "end-to-end-product-purchase-flow",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "End-to-End Product Purchase Flow",
+    "tags": [],
+    "uri": "features\\productPurchase.feature"
+  }
+]

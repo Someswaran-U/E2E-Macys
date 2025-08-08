@@ -1,26 +1,29 @@
-Feature: end to end product purchase flow
-    Scenario: Search for product
-        Given I am on the homepage
-        When I search the product with "<productId>"
-        Then I should be on the product description page of the product
+Feature: End-to-End Product Purchase Flow
 
-        When I click on add to bag button
-        And I validate the price on the bag overlay matches the product price on the PDP
-        Then bag overlay should appear with the right price
+  Scenario: Successfully purchasing a product
 
-        When I click on the bag icon
-        And I validate the price on the bag page matcher the product price on the PDP
-        Then I should be on the bag page with correct product and price
+    # Step 1
+    Given I am on the homepage
+    When I search for the product using product Id : "86800"
+    Then I should be navigated to the Product Description Page (PDP) for the product
 
-        When I click on checkout button
-        And I validate the price on the checkout page matches the product price on the PDP
-        Then I should be on the checkout page with correct product and price
-        
-        When I enter "<firstName>" and "<lastName>" and "<7901 Tyson>" and "<736 484 1234>"
-        Then I should see the delivery summary with correct details
+    # Step 2
+    When I click the Add to Bag button
+    Then the bag overlay should appear and the price on the bag overlay should match the product price on the PDP
 
-        When I enter "<ccNo>" and select month "<12>" and select year "<2025>" and cvv "<222>"
-        Then the payment button should be enabled
+    # Step 3
+    When I click the bag icon
+    Then I should be navigated to the Bag page and the product and price on the Bag page should match the PDP
 
-        When I click proceed to pay button
-        Then I should see the order number and log the order number
+    # Step 4
+    When I click the Checkout button
+    Then I should be navigated to the Checkout page and the product and price on the Checkout page should match the PDP
+
+    # Step 5
+    When I enter delivery details: firstName, lastName, address, phoneNumber
+    Then I should see the delivery summary with the correct details
+
+    # Step 6
+    When I enter payment details: ccNo, month, year, CVV
+    And I click the pay button
+    Then I should see the order confirmation with the order number

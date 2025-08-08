@@ -1,5 +1,5 @@
-import {confirmation} from '../page/confirmation.page'
-import input from '../TestData/input.json'
+import {confirmation} from '../page/confirmation.page.js'
+import input from '../TestData/input.json' with { type: "json" }
 export class confirmationMethod extends confirmation{
     constructor(page){
         super(page)

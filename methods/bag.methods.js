@@ -1,5 +1,5 @@
 import {bag} from '../page/bag.page.js'
-import input from '../TestData/input.json'
+import input from '../TestData/input.json' with { type: "json" }
 export class bagMethod extends bag {
     constructor(page){
         super(page)

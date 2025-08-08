@@ -23,7 +23,7 @@ export class checkout{
         this.month_select = this.month_iframe.locator('#ccmonth')
         this.month_select_enabled = this.month_iframe.locator('#ccmonth:enabled')
         this.year_select = this.year_iframe.locator('#ccyear')
-        this.cvv_input = this.cvv_iframe.locator('#cvvNumber')
+        this.cvv_input = this.cvv_iframe.locator('#cvvNumber:enabled')
         this.email_input = this.page.locator('#rc-payment-email')
         this.saveCardInfo_btn = this.page.locator('#rc-ccdetails-save')
 

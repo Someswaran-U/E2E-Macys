@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import productList from '../TestData/productList.json'
-import input from '../TestData/input.json'
+import input from '../TestData/input.json' with { type: "json" }
 import {homeMethod} from '../methods/home.methods.js'
 import {pdpMethod} from '../methods/pdp.methods.js'
 import {bagMethod} from '../methods/bag.methods.js'

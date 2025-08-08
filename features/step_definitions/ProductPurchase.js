@@ -1,88 +1,80 @@
-import { test, expect } from '@playwright/test';
-import productList from '../TestData/productList.json'
-import input from '../TestData/input.json'
+import { Given, When, Then } from '@cucumber/cucumber'
+import { expect } from '@playwright/test'
+import {setDefaultTimeout} from '@cucumber/cucumber';
 
+setDefaultTimeout(60 * 1000);
+import input from '../../TestData/input.json' with {type: "json"}
 
-const mcom = productList.mcom
+let price
 let prices = []
 let orderNo = []
+let index = 0
 
+//Step 1
 Given('I am on the homepage', async function () {
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
-});
-When('I search the product with {string}',async  function (string) {
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
-});
-Then('I should be on the product description page of the product', function () {
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
-});
-When('I click on add to bag button',async  function () {
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
+    await this.Home.goToSite();
+    expect(await this.Home.getTitle()).toContain(this.Home.title)
 });
 
-When('I validate the price on the bag overlay matches the product price on the PDP',async  function () {     
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
+When('I search for the product using product Id : {string}', async function (productId) {
+    await this.Home.searchProduct(productId)
+    await this.page.waitForLoadState('load')
 });
 
-Then('bag overlay should appear with the right price',async  function () {
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
+Then('I should be navigated to the Product Description Page \\(PDP) for the product', async function () {
+
+    price = await this.Pdp.getPrice()
+    prices.push(price)
 });
 
-When('I click on the bag icon',async  function () {
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
+//Step 2
+When('I click the Add to Bag button', async function () {
+    await this.Pdp.addToBag()
 });
 
-
-When('I validate the price on the bag page matcher the product price on the PDP',async  function () {        
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
-});
-Then('I should be on the bag page with correct product and price',async  function () {
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
+Then('the bag overlay should appear and the price on the bag overlay should match the product price on the PDP', async function () {
+    expect(await this.Pdp.getPriceInBag()).toContain(prices[index])
 });
 
-When('I click on checkout button',async  function () {
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
-});
-When('I validate the price on the checkout page matches the product price on the PDP',async  function () {   
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
-});
-Then('I should be on the checkout page with correct product and price',async  function () {
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
-});
-When('I enter {string} and {string} and {string} and {string}',async  function (string, string2, string3, string4) {
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
-});
-Then('I should see the delivery summary with correct details',async  function () {
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
-});
-When('I enter {string} and select month {string} and select year {string} and cvv {string}',async  function (string, string2, string3, string4) {
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
-});
-Then('the payment button should be enabled',async  function () {
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
-});
-When('I click proceed to pay button',async  function () {
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
+//Step 3
+When('I click the bag icon', async function () {
+    await this.Pdp.goToBagPage()
 });
 
-Then('I should see the order number and log the order number',async  function () {
-// Write code here that turns the phrase above into concrete actions
-return 'pending';
+Then('I should be navigated to the Bag page and the product and price on the Bag page should match the PDP', async function () {
+    expect(await this.Bag.getPrice()).toContain(prices[index])
+});
+
+//Step 4
+When('I click the Checkout button', async function () {
+    await this.Bag.checkOutProduct()
+});
+
+Then('I should be navigated to the Checkout page and the product and price on the Checkout page should match the PDP', async function () {
+    await this.Checkout.signInAsGuest()
+    expect(await this.Checkout.getOrderSubtotal()).toContain(prices[index])
+});
+
+//Step 5
+When('I enter delivery details: firstName, lastName, address, phoneNumber', async function () {
+    await this.Checkout.fillDetail(input.FirstName, input.LastName, input.add_line_1, input.phoneNo)
+});
+
+Then('I should see the delivery summary with the correct details', async function () {
+    await this.Checkout.validateDetails(input.FirstName, input.LastName, input.add_line_1, input.zip)
+});
+
+//Step 6
+When('I enter payment details: ccNo, month, year, CVV', async function () {
+    await this.Checkout.fillCardDetails(input.ccNo, input.cvv, input.month, input.year, input.email)
+});
+
+When('I click the pay button', async function () {
+    await this.Checkout.placeOrder()
+});
+
+Then('I should see the order confirmation with the order number', async function () {
+    let order = await this.Confirmation.getOrderDetails()
+    order = order.match(/\d+/)[0]
+    orderNo.push(order)
 });

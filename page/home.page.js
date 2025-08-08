@@ -1,4 +1,4 @@
-import input from '../TestData/input.json'
+import input from '../TestData/input.json' with { type: "json" }
 export class home{
     constructor(page){
         this.page = page
